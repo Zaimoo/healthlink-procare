@@ -1,3 +1,3 @@
-# Getting Started with Create React App
+# HealthLink ProCare
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a prototype for an EHR system for our school project. It is made with React Electron. 
