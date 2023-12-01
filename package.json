@@ -1,21 +1,63 @@
 {
-  "name": "clinic-app",
+  "name": "healthlink-procare",
   "version": "0.1.0",
+  "description": "A prototype for our EHR system application",
+  "author": {
+    "name": "zaimo",
+    "email": "reycezartigley@gmail.com"
+  },
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.3.2",
+    "chart.js": "^4.4.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
+    "react-modal": "^3.16.1",
+    "react-router-dom": "^6.20.0",
     "react-scripts": "5.0.1",
+    "react-table": "^7.8.0",
+    "recharts": "^2.10.1",
+    "uuid": "^9.0.1",
     "web-vitals": "^2.1.4"
   },
+  "main": "public/electron.js",
+  "homepage": "./",
+  "build": {
+    "appId": "com.healthlink-procare",
+    "productName": "HealthLink ProCare",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "path/to/your/icon.icns"
+    },
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "./public/icon.ico"
+    }
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "concurrently \"SET BROWSER=none&&npm run react-start\" \"wait-on tcp:127.0.0.1:3000 && electron .\"",
+    "react-start": "react-scripts start",
+    "react-test": "react-scripts test",
+    "react-build": "react-scripts build",
+    "react-eject": "react-scripts eject",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +76,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^27.1.2",
+    "electron-builder": "^24.9.1",
+    "wait-on": "^7.2.0"
   }
 }

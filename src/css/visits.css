@@ -1,0 +1,40 @@
+.recent-visits-button {
+    display: flex;
+}
+
+.recent-visits-button Button {
+    margin-right: 0.7rem;
+}
+
+.visits-table {
+    width: 100%;
+    border-radius: 8px;
+    border-collapse: collapse;
+}
+  
+.visits-table th,
+.visits-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.visits-table tbody tr:hover {
+    background-color: #ddd;
+}
+
+.visits-table tbody tr.delete-mode-row:hover {
+    background-color: rgba(192, 0, 19, 0.562);
+  }
+  
+  
+.visits-table th {
+    border: none;
+}
+    
+.visits-box li {
+    margin: 0;
+    padding: 5px 0;
+    list-style: none;
+}
+

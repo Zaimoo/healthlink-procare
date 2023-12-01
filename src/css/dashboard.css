@@ -1,0 +1,126 @@
+.dashboard-container {
+    padding: 50px;
+  }
+
+.card-graph-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.cards {
+  display: flex;
+  flex: 0 20rem 15rem;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.clinic-visits-card {
+background-color: #ffffff;
+border: 1px solid #ddd;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+padding: 10px 30px;
+text-align: center;
+width: 100%; 
+}
+
+
+.symptoms-graph {
+display: block;
+justify-content: center;
+align-items: center;
+
+}
+
+.symptoms-graph-container {
+  flex-basis: 1500px;
+  height: auto;
+  background-color: #f5f4f4;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.symptoms-graph-header {
+  padding-left: 20px;
+}
+
+  .recent-visits-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  
+  .recent-visits-container {
+    background-color: #f5f4f4;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 15px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .table-container{
+    height: 15rem;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */  
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  .table-container::-webkit-scrollbar {
+    display: none;
+  }
+    
+  .patient-table {
+      width: 100%;
+      border-radius: 8px;
+      border-collapse: collapse;
+  }
+
+  .patient-table th {
+    top: 0;
+    background-color: #ffffff;
+    position: sticky !important;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .patient-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+  }
+  .students-table tr:hover {
+    background-color: #ddd;
+}
+  
+  .patient-table th {
+    border: none;
+  }
+  
+    
+    .patient-box li {
+      margin: 0;
+      padding: 5px 0;
+      list-style: none;
+    }
+
+
+
+
+
+  
+
+
+
+
+
+
+  
