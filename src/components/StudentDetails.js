@@ -81,22 +81,22 @@ useEffect(() => {
                 day: 'numeric',
             })}</p>
                 <p><strong>Gender:</strong> {student.gender}</p>
-                <p><strong>Grade Level:</strong> {student.gradeLevel}</p>
-                <p><strong>Strand:</strong> {student.strand}</p>
                 <p><strong>Contact Number:</strong> {student.contactNumber}</p>
             </div>  
         </div>
 
         <div className='visit-history-container'>
           <div className='visit-history-header'>
-            <h2>Visit history</h2> 
+            <h2>Admission history</h2> 
             </div>
         <div className='visit-history-content'>
           {filteredVisits.map((visit) => {
             return (
                 <div className='visit-history'>
                     <h4>{visit.visitDate}</h4>
-                    <span>Symptoms: {visit.symptoms.join(', ')}</span>
+                    <span><strong>Admission Type:</strong> {visit.admissionType}</span>
+                    <br></br>
+                    <span><strong>Symptoms:</strong> {visit.symptoms.join(', ')}</span>
                 </div>
                 )
             })}
