@@ -1,32 +1,32 @@
 .dashboard-container {
-    padding: 50px;
-  }
+  padding: 50px;
+}
 
 .card-graph-container {
-  display: flex;
-  justify-content: space-between;
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
 
 .cards {
   display: flex;
-  flex: 0 20rem 15rem;
-  flex-direction: column;
-  justify-content: space-between;
-
 }
 
 .clinic-visits-card {
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+flex-direction: column;
+margin-right: 2rem;
+margin-bottom: 2rem;
+text-align: center;
+flex-direction: column;
 background-color: #ffffff;
 border: 1px solid #ddd;
 border-radius: 10px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-padding: 10px 30px;
-text-align: center;
-width: 100%; 
+padding: 20px 30px;
+width: 14rem;
 }
-
 
 .symptoms-graph {
 display: block;
@@ -53,7 +53,8 @@ align-items: center;
   .recent-visits-header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
+    margin-bottom: 1rem;
   }
   
   .recent-visits-container {
@@ -70,7 +71,7 @@ align-items: center;
     height: 15rem;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */  
-    overflow-x: hidden;
+    overflow-x: scroll;
     overflow-y: scroll;
   }
   .table-container::-webkit-scrollbar {

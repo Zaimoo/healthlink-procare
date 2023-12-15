@@ -1,3 +1,11 @@
+.visits-container {
+    padding: 50px ;
+}
+
+.recent-visits-container {
+    height: 30rem;
+}
+
 .recent-visits-button {
     display: flex;
 }
@@ -36,5 +44,47 @@
     margin: 0;
     padding: 5px 0;
     list-style: none;
+}
+
+.admission-requests-container {
+    margin-top: 20px;
+    background-color: #f5f4f4;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.admission-requests-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admission-requests-table {
+    width: 100%;
+    border-radius: 8px;
+    border-collapse: collapse;
+    margin-top: 10px; /* Adjust the margin as needed */
+}
+
+.admission-requests-table th,
+.admission-requests-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.admission-requests-table tbody tr:hover {
+    background-color: #ddd;
+}
+
+.admission-requests-table tbody tr.delete-mode-row:hover {
+    background-color: rgba(192, 0, 19, 0.562);
+}
+
+.admission-requests-table th {
+    border: none;
 }
 

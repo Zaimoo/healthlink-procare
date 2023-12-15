@@ -22,6 +22,7 @@ const SignInModal = ({ modalIsOpen, closeModal }) => {
   const [admissionType, setAdmissionType] = useState('');
   const [selectedStudentId, setSelectedStudentId] = useState('');
   const [symptoms, setSymptoms] = useState([]);
+  const [admissionDate, setAdmissionDate] = useState();
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -50,8 +51,8 @@ const SignInModal = ({ modalIsOpen, closeModal }) => {
           firstName: selectedStudent.firstName,
           lastName: selectedStudent.lastName,
           symptoms: symptoms,
-          admissionType: admissionType, // New line
-          visitDate: new Date(Date.now()).toLocaleString("en-US", {
+          admissionType: admissionType,
+          visitDate: new Date(admissionDate).toLocaleString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
@@ -80,14 +81,14 @@ const SignInModal = ({ modalIsOpen, closeModal }) => {
       <Modal.Body>
         <Form>
           <Form.Group controlId="formStudent">
-            <Form.Label>Select Student:</Form.Label>
+            <Form.Label>Select Patient:</Form.Label>
             <Form.Control
               as="select"
               value={selectedStudentId}
               onChange={(e) => setSelectedStudentId(e.target.value)}
             >
               <option value="" disabled>Select a student</option>
-              {students.map((student) => (
+              {students.filter((student) => {return student.roleType === "user"}).map((student) => (  
                 <option key={student.idNumber} value={`${student.firstName} ${student.lastName}`}>
                   {`${student.firstName} ${student.lastName}`}
                 </option>
@@ -111,6 +112,12 @@ const SignInModal = ({ modalIsOpen, closeModal }) => {
   </Form.Control>
 </Form.Group>
 
+          <Form.Group>
+            <Form.Label>Admission Date</Form.Label>
+            <Form.Control type="datetime-local"
+            value={admissionDate}
+            onChange={(e) => setAdmissionDate(e.target.value)} />
+          </Form.Group>
 
           <Form.Group controlId="formSymptoms" className="mb-2">
             <Form.Label>Symptoms:</Form.Label>

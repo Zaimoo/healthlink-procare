@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useTable } from 'react-table';
-import { getAllVisits, openDB } from '../indexedDB';
+import { getAllVisits, getAllStudents, openDB } from '../indexedDB';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import SignInModal from './components2/SignInModal';
 import ClinicVisitsCard from './components2/clinicVisitsCard';
@@ -10,18 +10,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Dashboard = () => {
   const [visits, setVisits] = useState([]);
+  const [patients, setPatients] = useState([])
   const [modalIsOpen, setModalIsOpen] = useState(false);
   let numberOfClinicVisits;
+  let numberOfPatients = patients.length;
 
   useEffect(() => {
     const fetchVisits = async () => {
       const db = await openDB();
       const visitsData = await getAllVisits(db);
+      const patientsData = await getAllStudents(db)
+      const noDoctors = patientsData.filter((patient) => patient.roleType === "user")
       setVisits(visitsData.reverse());
+      setPatients(noDoctors);
     };
 
     fetchVisits();
-  }, [visits]);
+  }, []);
 
   const generateSymptomsData = (visits) => {
     const symptomsCount = {};
@@ -100,10 +105,11 @@ const Dashboard = () => {
   return (
     <>
       <div className="dashboard-container">
+        
         <h1>Dashboard</h1>
 
         <div className="card-graph-container">
-        <ClinicVisitsCard visits={numberOfClinicVisits} />
+        <ClinicVisitsCard visits={numberOfClinicVisits} patientCount={numberOfPatients}/>
 
           <div className="symptoms-graph-container">
             <div className="symptoms-graph-header">
@@ -117,7 +123,7 @@ const Dashboard = () => {
                   <XAxis type="number" allowDecimals= {false}  />
                   <YAxis dataKey="name" type="category" width={200}  />
                   <Tooltip />
-                  <Bar dataKey="value" fill="#8884d8" />
+                  <Bar dataKey="value" fill="#18A1B3" />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -127,7 +133,7 @@ const Dashboard = () => {
         <div className="recent-visits-container">
           <div className="recent-visits-header">
             <h2>Recent Admissions</h2>
-            <Button onClick={() => openModal()}>Admit</Button>
+            <button className='default-btn'onClick={() => openModal()}>Admit</button>
           </div>
           <div>
 

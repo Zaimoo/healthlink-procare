@@ -1,4 +1,3 @@
-// AddStudentModal.js
 
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
@@ -12,6 +11,7 @@ const AddStudentModal = ({ modalIsOpen, closeModal, handleAddStudent }) => {
   const [gender, setGender] = useState('');
   const [address, setAddress] = useState('');
   const [contactNumber, setContactNumber] = useState('');
+  const [emergencyNumber, setEmergencyNumber] = useState('');
 
   const handleSubmit = async () => {
     const newStudent = {
@@ -20,7 +20,9 @@ const AddStudentModal = ({ modalIsOpen, closeModal, handleAddStudent }) => {
       birthDate,
       gender,
       address,
-      contactNumber,
+      mobileNumber: contactNumber,
+      emergencyNumber,
+      roleType: 'user'
     };
 
     handleAddStudent(newStudent);
@@ -30,7 +32,7 @@ const AddStudentModal = ({ modalIsOpen, closeModal, handleAddStudent }) => {
   return (
     <Modal show={modalIsOpen} onHide={closeModal} centered>
       <Modal.Header closeButton>
-        <Modal.Title>Add Student</Modal.Title>
+        <Modal.Title>Add Patient</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -92,6 +94,16 @@ const AddStudentModal = ({ modalIsOpen, closeModal, handleAddStudent }) => {
               placeholder='Enter the Contact Number'
               value={contactNumber}
               onChange={(e) => setContactNumber(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId='formEmergencyNumber'>
+            <Form.Label>Emergency Number</Form.Label>
+            <Form.Control
+              className='mb-2'
+              type='text'
+              placeholder='Enter the Emergency Number'
+              value={emergencyNumber}
+              onChange={(e) => setEmergencyNumber(e.target.value)}
             />
           </Form.Group>
         </Form>

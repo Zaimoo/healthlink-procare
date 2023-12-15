@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useTable, useGlobalFilter } from 'react-table';
-import Button from 'react-bootstrap/Button';
 import AddStudentModal from './components2/AddStudentModal';
-import { openDB, getAllStudents, saveStudentToDB } from '../indexedDB';
+import { openDB, getAllStudents, saveStudentToDB, STORE_NAME } from '../indexedDB';
 import { useNavigate } from 'react-router-dom';
-
-import '../css/students.css';
-import { GlobalFilter } from './components2/GlobalFilter';
+import '../css/students.css'
+import { useFilter } from '../FilterContext';
 
 function Students() {
+  const { globalFilter } = useFilter();
   const [students, setStudents] = useState([]);
 
   const columns = React.useMemo(
@@ -27,7 +26,7 @@ function Students() {
       },
       {
         Header: 'Contact Number',
-        accessor: 'contactNumber',
+        accessor: 'mobileNumber',
       },
     ],
     []
@@ -63,14 +62,17 @@ function Students() {
     rows,
     prepareRow,
     state,
-    setGlobalFilter,
-  } = useTable({ columns, data: students }, useGlobalFilter);
+    setGlobalFilter: setTableGlobalFilter,
+} = useTable({ columns, data: students }, useGlobalFilter);
 
-  const { globalFilter } = state
+useEffect(() => {
+  setTableGlobalFilter(globalFilter);
+}, [globalFilter, setTableGlobalFilter]);
+
 
   const initializeDB = async () => {
     const db = await openDB();
-    const students = await getAllStudents(db);
+    const students = await getStudentsByUserType(db, 'user');
     setStudents(students);
   };
 
@@ -86,11 +88,10 @@ const handleRowClick = (student) => {
 
   return (
       <div className='students-container'>
-        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <div className='student-list-container'>
         <div className='student-list-header'>
           <h2>Patients List</h2>    
-          <Button onClick={openModal}>Add Patient</Button>
+          <button className='default-btn' onClick={openModal}>Add Patient</button>
         </div>
 
         <table {...getTableProps()} className="students-table">
@@ -127,6 +128,32 @@ const handleRowClick = (student) => {
 
     </div>
   );
+}
+
+async function getStudentsByUserType(db, userType) {
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(STORE_NAME, 'readonly');
+    const objectStore = transaction.objectStore(STORE_NAME);
+    const idx = objectStore.index('roleTypeIDX')
+    const cursor = idx.openCursor(userType);
+    let patients = [];
+
+    cursor.onsuccess = (e) => {
+      const cursor = e.target.result;
+      if (cursor) {
+        patients.push(cursor.value);
+        cursor.continue();
+      } else {
+        resolve(patients);
+      }
+
+    };
+
+    cursor.onerror = (event) => {
+      reject(event.target.error);
+    };
+
+  });
 }
 
 export default Students;

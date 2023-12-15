@@ -1,0 +1,24 @@
+.role-gender-birthdate-container {
+    display: flex;
+    margin: 0.5rem 0;
+}
+
+.register-gender-container {
+    margin: 0rem 3rem;
+}
+
+#registerGender {
+    width: 14rem;
+}
+
+#registerRole {
+    width: 14rem;
+}
+
+#registerBirthDate {
+    width: 14rem;
+}
+
+.register-forms {
+    margin: 0.5rem 0;
+}

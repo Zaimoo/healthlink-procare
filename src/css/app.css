@@ -1,9 +1,56 @@
 body {
     background-color: #ececec;
+    font-family: 'Roboto', sans-serif;
 }
 
-.visits-container {
-    padding: 50px;
+h2 {
+  padding: 0;
+  margin: 0;
 }
 
-  
+.app-container {
+    display: flex;
+    height: 100vh;
+  }
+
+  .main-content {
+    flex-grow: 1;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */  
+    overflow-x: hidden;
+    overflow-y: scroll;
+    transition: flex 0.3s;
+
+  }
+  .main-content::-webkit-scrollbar {
+    display: none;
+  }
+
+.default-btn {
+  background-color: #24cbc8;
+  padding: 0.8rem 2rem;
+  font-weight: 500;
+  font-size: large;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.default-btn:hover {
+  background-color: #1ea7a4;
+}
+
+.red-btn {
+  background-color: #dc3545;
+  padding: 0.8rem 2rem;
+  font-weight: 500;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.red-btn:hover {
+  background-color: #bb2d3b;
+}

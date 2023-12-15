@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap');
+
+.sidebar {
+    min-width: 0; /* Allow the sidebar to shrink */
+    flex: 0 0 250px;
+    height: 100%;
+    background-color: #f5f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    transition: flex 0.3s;
+    font-size: large;
+    border: 1px solid #ddd;
+  }
+  
+  .title-site {
+    text-decoration: none !important;
+    font-size: 1.3em !important;
+    color: #24cbc8;
+    text-align: center;
+    
+  }
+
+  .sidebar-header {
+    display: flex;
+    font-family: 'Lora', serif;
+    height: 10rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #ddd;
+    font-size: x-large;
+  }
+
+  .sidebar-body {
+    padding-top: 5rem;
+    display: flex;
+    align-items: start;
+    height: 45rem;
+    font-size: larger;
+  }
+
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .sidebar li {
+    margin-bottom: 3rem;
+  }
+  
+  .sidebar-body a {
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+  }
+
+  .sidebar .active {
+    color: #24cbc8;
+}
+
+.sidebar-footer li {
+  list-style: none;
+}
+.sidebar-footer {
+  text-decoration: none;
+  color: black;
+  font-size: larger;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.icons {
+  margin-right: 0.5rem;
+  
+}

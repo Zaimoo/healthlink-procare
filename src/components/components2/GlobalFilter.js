@@ -1,15 +1,19 @@
+// GlobalFilter.js
 import React from "react";
 import Form from 'react-bootstrap/Form';
 
-export const GlobalFilter = ({ filter, setFilter}) => {
+const GlobalFilter = ({ filter, setFilter }) => {
     return (
         <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Control 
-                type="text" placeholder="Search..."
-                onChange={(e) => setFilter(e.target.value)} />
-               
+                    type="text" 
+                    placeholder="Search..."
+                    value={filter || ""}
+                    onChange={(e) => setFilter(e.target.value)} />
             </Form.Group>
         </Form>
     )
 }
+
+export default GlobalFilter;
