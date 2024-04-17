@@ -1,6 +1,6 @@
 {
   "name": "healthlink-procare",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A prototype for our EHR system application",
   "author": {
     "name": "zaimo",
@@ -40,7 +40,7 @@
     },
     "mac": {
       "target": "dmg",
-      "icon": "path/to/your/icon.icns"
+      "icon": "./public/icon.ico"
     },
     "nsis": {
       "allowToChangeInstallationDirectory": true,
@@ -58,7 +58,8 @@
     "react-build": "react-scripts build",
     "react-eject": "react-scripts eject",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "dist-all": "electron-builder -mw"
   },
   "eslintConfig": {
     "extends": [

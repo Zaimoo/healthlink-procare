@@ -94,7 +94,9 @@ const Login = ({ setToken }) => {
           </div>
         </Form>
 
-        
+        <Button>
+          
+        </Button>
 
       <Register modalIsOpen={modalIsOpen}
           closeModal={() => closeModal()} />
